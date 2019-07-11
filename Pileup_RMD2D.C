@@ -33,7 +33,7 @@ void Pileup_RMD2D(){
          Double_t PProbY = 1.-exp(-1.*deltaT/tauY);
          Double_t tauXY = murate*tauX*tauY;
          Double_t PProbXY = 1.-exp(-1.*deltaT/tauXY);
-         Double_t PProb = PProbXY + (PProbX-PProbXY)*(PProbY-PProbXY);
+         Double_t PProb = PProbXY + (1.-PProbXY)*(PProbX-PProbXY)*(PProbY-PProbXY);
          Prob_tot+=4.*PProb*gaus_integral(RMDhit_sigma,width_startX,width_startX+width_bundle[iconf])*gaus_integral(RMDhit_sigma,width_startY,width_startY+width_bundle[jconf]);
          Prob_totY+=4.*PProbY*gaus_integral(RMDhit_sigma,width_startX,width_startX+width_bundle[iconf])*gaus_integral(RMDhit_sigma,width_startY,width_startY+width_bundle[jconf]);
          width_startY += width_bundle[jconf];
